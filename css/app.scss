@@ -1,0 +1,14 @@
+@import "reset";
+
+$body-font: sans-serif;
+$body-size: 30px;
+$primary-color: blue;
+
+body {
+    font-family: $body-font;
+    line-height: 1.5;
+    font-size: $body-size;
+    text-align: center;
+    color: $primary-color;
+    overflow: hidden;
+}
