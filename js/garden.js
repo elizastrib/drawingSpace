@@ -1,43 +1,68 @@
+let gridSpacing = 30
+
+let W = window.innerWidth
+let H = window.innerHeight
+
 
 function setup() {
-    createCanvas(windowWidth,windowHeight);
-}
 
-function draw() {
+    for (let y = 0; y < H - (gridSpacing * 2); y += gridSpacing) {
+        for (let x = gridSpacing; x < W - gridSpacing; x += gridSpacing) {
+            
+            let p
+            p = createP("X");
+            p.position(x, y)
+            p.mouseOver(changeEmoji)
 
-// create a grid across the width and height of the browser
-// starting at 0, until y/x is across the whole width/height, add x/y
-for (let y=0; y < height; y += 15) {
-    for (let x=0; x < width; x += 15) {
-        
-        let p = createP(" ").size(15,15);
-
-        p.position(x,y)
-        p.mousePressed(change)
-        p.mouseOver(change)
-        p.mouseOver(p.c)
-
+        }
     }
 }
 
-function change() {
-    
-    //change the content of the p tag to be an emoji
-    this.html(randomEmoji())
-    console.log(randomEmoji())
 
+function changeEmoji() {
+  //change the html inside of THIS p tag to be a new random emoji
+  this.html(randomEmoji())
 }
 
 function randomEmoji() {
-    
-    let emojis = ["✨", "💫", "🌟", "⭐️"]
-    let output;
 
+  let i = ['✨','💫','🌟','⭐️']
+
+  let output;
+
+  let r = floor(random(i.length))
+    output =  i[r]
+
+  /* if (random(1) < 0.03) {
+    let rand = floor(random(creature.length))
+    output = creature[rand];
+  } else {
     let rand = floor(random(emojis.length))
-    output = emojis[rand]
+    output =  emojis[rand]
+  } */
 
-    return output;
+
+  //favicon replacement
+  //https://css-tricks.com/emojis-as-favicons/
+  const linkForFavicon = document.querySelector(
+    `head > link[rel='icon']`
+  );
+
+  newFavicon = faviconTemplate`${output}`;
+    // console.log(newFavicon);
+    linkForFavicon.setAttribute(`href`, `data:image/svg+xml,${newFavicon}`);
+
+  return output;
 
 }
 
+
+function faviconTemplate(string, icon) {
+  return `
+    <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
+      <text y=%22.9em%22 font-size=%2290%22>
+        ${icon}
+      </text>
+    </svg>
+  `.trim();
 }

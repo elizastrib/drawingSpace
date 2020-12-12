@@ -1,8 +1,10 @@
 body {
     height:100vh;
     width:100vw;
-    background-color: blue;
-    padding: 20px;
+    background-color: #051526;
+    color: #051526;
+    padding: 0;
+    margin: 0;
 }
 
 canvas {
@@ -11,6 +13,7 @@ canvas {
 
 p {
     font-family: sans-serif;
-    border: 2px solid red;
-    display: inline-block;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 5px;
 }
