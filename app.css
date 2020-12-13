@@ -2,18 +2,23 @@ body {
     height:100vh;
     width:100vw;
     background-color: #051526;
-    color: #051526;
+    color: #071066;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 canvas {
     display: block;
 }
 
-p {
-    font-family: sans-serif;
-    cursor: pointer;
-    font-size: 1.2em;
-    padding: 5px;
+div {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+
+img {
+    width: 20px;
+    height: 20px;
 }

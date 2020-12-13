@@ -1,4 +1,4 @@
-let gridSpacing = 30
+let gridSpacing = 20
 
 let W = window.innerWidth
 let H = window.innerHeight
@@ -6,63 +6,46 @@ let H = window.innerHeight
 
 function setup() {
 
-    for (let y = 0; y < H - (gridSpacing * 2); y += gridSpacing) {
-        for (let x = gridSpacing; x < W - gridSpacing; x += gridSpacing) {
+    for (let y = (gridSpacing/2); y < H - (gridSpacing * 2); y += gridSpacing) {
+        for (let x = (gridSpacing/2); x < W - gridSpacing; x += gridSpacing) {
             
-            let p
-            p = createP("X");
-            p.position(x, y)
-            p.mouseOver(changeEmoji)
+            let img
+            img = './assets/blank.png'
+
+
+            let d = createDiv('·')
+
+
+            d.position(x,y)
+            d.mouseOver(changeImage)
 
         }
     }
 }
 
 
-function changeEmoji() {
-  //change the html inside of THIS p tag to be a new random emoji
-  this.html(randomEmoji())
+function changeImage() {
+    
+
+    let images = ['./assets/star1.png', './assets/star2.png', './assets/star3.png', './assets/star4.png', './assets/star5.png', './assets/star6.png', './assets/star7.png', './assets/star8.png', './assets/star9.png', './assets/star10.png', './assets/star11.png', './assets/star12.png', './assets/star13.png', './assets/star14.png', './assets/star15.png', './assets/star16.png', './assets/star17.png', './assets/star18.png', './assets/star19.png', './assets/star20.png', './assets/star21.png', './assets/star22.png', './assets/star23.png', './assets/star24.png', './assets/star25.png', './assets/star26.png', './assets/star27.png', './assets/star28.png', './assets/star29.png', './assets/star30.png', './assets/star31.png']
+    let rand = floor(random(images.length))
+    let randomImage = images[rand]
+
+    img = randomImage
+    console.log(img)
+
+    this.html('<img src='+img+'>')
+
 }
 
-function randomEmoji() {
+function randomImage() {
 
-  let i = ['✨','💫','🌟','⭐️']
+  let images = ['.assets/star1.png', './assets/star2.png', './assets/star3.png', './assets/star4.png']
 
   let output;
 
-  let r = floor(random(i.length))
-    output =  i[r]
-
-  /* if (random(1) < 0.03) {
-    let rand = floor(random(creature.length))
-    output = creature[rand];
-  } else {
-    let rand = floor(random(emojis.length))
-    output =  emojis[rand]
-  } */
+  let rand = floor(random(images.length))
+    img =  images[rand]
 
 
-  //favicon replacement
-  //https://css-tricks.com/emojis-as-favicons/
-  const linkForFavicon = document.querySelector(
-    `head > link[rel='icon']`
-  );
-
-  newFavicon = faviconTemplate`${output}`;
-    // console.log(newFavicon);
-    linkForFavicon.setAttribute(`href`, `data:image/svg+xml,${newFavicon}`);
-
-  return output;
-
-}
-
-
-function faviconTemplate(string, icon) {
-  return `
-    <svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22>
-      <text y=%22.9em%22 font-size=%2290%22>
-        ${icon}
-      </text>
-    </svg>
-  `.trim();
 }
