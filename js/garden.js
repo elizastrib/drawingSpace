@@ -13,11 +13,13 @@ function setup() {
             img = './assets/blank.png'
 
 
-            let d = createDiv('·')
+            let d = createDiv('<img src='+img+'>')
 
 
             d.position(x,y)
-            d.mouseOver(changeImage)
+            d.mouseOut(changeImage)
+            d.touchStarted(changeImage)
+
 
         }
     }
