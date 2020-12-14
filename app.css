@@ -2,7 +2,7 @@ body {
     height:100vh;
     width:100vw;
     background-color: #051526;
-    color: #071066;
+    color: #ffeeca;
     padding: 0;
     margin: 0;
     text-align: center;
@@ -20,4 +20,17 @@ div {
 img {
     width: 20px;
     height: 20px;
+}
+
+p {
+  position: absolute;
+  bottom: 40px;
+  width: 100vw;
+  opacity: 0.4;
+}
+
+@media only screen and (max-width:600) {
+  body {
+    overflow: hidden;
+  }
 }
