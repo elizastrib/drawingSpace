@@ -20,6 +20,7 @@ function setup() {
             d.mouseOut(changeImage)
             d.touchStarted(changeImage)
 
+
         }
     }
 }
