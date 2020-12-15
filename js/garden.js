@@ -1,10 +1,12 @@
 let gridSpacing = 20
 
 let W = window.innerWidth
-let H = window.innerHeight
+let H = window.innerHeight 
+
 
 
 function setup() {
+
 
     for (let y = (gridSpacing/2); y < H - (gridSpacing * 2); y += gridSpacing) {
         for (let x = (gridSpacing/2); x < W - gridSpacing; x += gridSpacing) {
@@ -12,17 +14,18 @@ function setup() {
             let img
             img = './assets/blank.png'
 
-
             let d = createDiv('<img src='+img+'>')
-
 
             d.position(x,y)
             d.mouseOut(changeImage)
+
             d.touchStarted(changeImage)
+            d.touchMoved(changeImage)
 
 
         }
     }
+    
 }
 
 
